@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workflow Orchestration | Digital First AI Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Custom scrollbar for sidebar */
+    .sidebar-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+    .sidebar-scrollbar::-webkit-scrollbar-thumb {
+      background-color: rgba(107, 114, 128, 0.5);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+  <!-- Sidebar -->
+  <div class="flex flex-col w-64 bg-white border-r border-gray-200 sidebar-scrollbar">
+    <div class="flex items-center h-16 px-4 border-b border-gray-200">
+      <img src="https://digitalfirst.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.7a7a3a3a.svg&w=64&q=75" alt="Digitalfirst.ai" class="h-6 w-auto" />
+      <button class="ml-auto p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="Toggle sidebar">
+        <svg class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col flex-1 overflow-y-auto">
+      <div class="px-4 py-6">
+        <div class="flex items-center space-x-3">
+          <div class="h-8 w-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-semibold">M</div>
+          <div class="text-sm font-semibold">My first workspace</div>
+          <button class="ml-auto p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="Workspace options">
+            <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h12M6 6h12M6 18h12" />
+            </svg>
+          </button>
+        </div>
+        <nav class="mt-6 space-y-1 text-sm font-medium text-gray-700">
+          <a href="dashboard.html" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+            <svg class="h-5 w-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
+            </svg>
+            Dashboard
+          </a>
+          <div>
+            <button id="projects-toggle" class="flex items-center w-full px-3 py-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-expanded="false" aria-controls="projects-submenu">
+              <svg class="h-5 w-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+              </svg>
+              Projects
+              <svg class="ml-auto h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div id="projects-submenu" class="hidden mt-1 space-y-1 pl-8 text-gray-600">
+              <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+                <svg class="h-5 w-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m-6 3h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                </svg>
+                Onboarding
+              </a>
+              <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-100">IKEA Email Strategy</a>
+              <a href="projects.html" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+                <svg class="h-5 w-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                All projects
+              </a>
+            </div>
+          </div>
+          <div>
+            <button id="dataroom-toggle" class="flex items-center w-full px-3 py-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-expanded="false" aria-controls="dataroom-submenu">
+              <svg class="h-5 w-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+              </svg>
+              Data Room
+              <svg class="ml-auto h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div id="dataroom-submenu" class="hidden mt-1 space-y-1 pl-8 text-gray-600">
+              <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+                <svg class="h-5 w-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Segments
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+                <svg class="h-5 w-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M3 18h18" />
+                </svg>
+                Products
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+                <svg class="h-5 w-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                Strategy Canvases
+              </a>
+            </div>
+          </div>
+          <a href="#" class="flex items-center px-3 py-2 rounded-md hover:bg-gray-100">
+            <svg class="h-5 w-5 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Web Searcher
+          </a>
+        </nav>
+      </div>
+      <div class="px-4 py-6 border-t border-gray-200 text-sm text-gray-600">
+        <div class="flex items-center space-x-3">
+          <div class="h-6 w-6 rounded-full bg-purple-500 flex items-center justify-center text-white font-semibold">⚫</div>
+          <div>Credits 99/100 per day</div>
+        </div>
+        <div class="mt-2">
+          <button class="w-full py-2 px-4 rounded-md bg-purple-600 text-white font-semibold hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            Upgrade plan
+          </button>
+        </div>
+        <div class="mt-6 flex items-center space-x-3">
+          <div class="h-8 w-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-semibold">DE</div>
+          <div>Marvin Ng</div>
+          <button class="ml-auto p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-label="User settings">
+            <svg class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6">
+          <a href="#" class="text-indigo-600 hover:text-indigo-900">Help Center</a>
+        </div>
+      </div>
+    </div>
+
+  <!-- Main content -->
+  <div class="flex flex-col flex-1 overflow-auto">
+    <div class="p-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Ask DigitalFist AI for a persona canvas for..."
+            class="w-full rounded-md border border-gray-300 px-4 py-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          />
+          <button
+            class="absolute right-2 top-1/2 -translate-y-1/2 rounded-md bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            aria-label="Search"
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-10 h-[600px] rounded-lg border border-gray-300 bg-white"></div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+  // Toggle submenu visibility
+  document.getElementById('projects-toggle').addEventListener('click', () => {
+    const submenu = document.getElementById('projects-submenu');
+    const expanded = submenu.classList.toggle('hidden');
+    document.getElementById('projects-toggle').setAttribute('aria-expanded', !expanded);
+  });
+  document.getElementById('dataroom-toggle').addEventListener('click', () => {
+    const submenu = document.getElementById('dataroom-submenu');
+    const expanded = submenu.classList.toggle('hidden');
+    document.getElementById('dataroom-toggle').setAttribute('aria-expanded', !expanded);
+  });
+
+  // Drag and drop functionality using interact.js
+  interact('.draggable').draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    listeners: {
+      move: dragMoveListener,
+    }
+  });
+
+  function dragMoveListener (event) {
+    var target = event.target;
+    // keep the dragged position in the data-x/data-y attributes
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    // translate the element
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+    // update the position attributes
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  }
+
+  // Allow dropzone
+  interact('#canvas').dropzone({
+    accept: '.draggable',
+    overlap: 0.75,
+    ondropactivate: function (event) {
+      event.target.classList.add('drop-active');
+    },
+    ondragenter: function (event) {
+      var draggableElement = event.relatedTarget;
+      var dropzoneElement = event.target;
+      dropzoneElement.classList.add('drop-target');
+      draggableElement.classList.add('can-drop');
+    },
+    ondragleave: function (event) {
+      event.target.classList.remove('drop-target');
+      event.relatedTarget.classList.remove('can-drop');
+    },
+    ondrop: function (event) {
+      // You can add logic here to handle drop event
+      console.log('Dropped', event.relatedTarget, 'into', event.target);
+    },
+    ondropdeactivate: function (event) {
+      event.target.classList.remove('drop-active');
+      event.target.classList.remove('drop-target');
+    }
+  });
+
+  // Add draggable components to the canvas on click
+  document.querySelectorAll('.tool-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const canvas = document.getElementById('canvas');
+      const newNode = document.createElement('div');
+      newNode.classList.add('draggable', 'p-4', 'bg-white', 'rounded-md', 'shadow', 'border', 'border-gray-300', 'absolute');
+      newNode.style.top = '20px';
+      newNode.style.left = '20px';
+      newNode.style.width = '200px';
+      newNode.style.height = '100px';
+      newNode.textContent = item.textContent.trim();
+      newNode.setAttribute('data-x', 0);
+      newNode.setAttribute('data-y', 0);
+      canvas.appendChild(newNode);
+
+      // Make the new node draggable
+      interact(newNode).draggable({
+        inertia: true,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })
+        ],
+        autoScroll: true,
+        listeners: { move: dragMoveListener }
+      });
+    });
+  });
+</script>
+</body>
+</html>
+</final_file_content>
